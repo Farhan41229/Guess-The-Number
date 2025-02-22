@@ -17,21 +17,23 @@ check.addEventListener('click', function () {
   const value = Number(guess.value);
   if (!value) {
     message.textContent = `⛔ No number provided`;
-  } else if (value === random) {
+  } else if (value === random && score != 0) {
     message.textContent = '🎉 Correct number';
     document.querySelector('body').style.backgroundColor = '#60b347';
     number.style.width = '30rem';
     number.textContent = random;
     highscore = Math.max(highscore, score);
     highscore_selector.textContent = highscore;
-  } else if (value < random) {
+  } else if (value < random && score != 0) {
     message.textContent = '📉 Too low';
     score--;
     socre_slector.textContent = score;
-  } else if (value > random) {
+  } else if (value > random && score != 0) {
     message.textContent = '📈 Too high';
     score--;
     socre_slector.textContent = score;
+  } else {
+    message.textContent = '💥 You lost the game';
   }
 });
 
